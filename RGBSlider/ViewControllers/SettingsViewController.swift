@@ -26,6 +26,8 @@ final class SettingsViewController: UIViewController {
     var blue: CGFloat = 0
     var alpha: CGFloat = 0
     
+    weak var delegate: SettingsViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         coloredView.layer.cornerRadius = 20
@@ -57,6 +59,16 @@ final class SettingsViewController: UIViewController {
         default:
             blueLabel.text = string(from: blueSlider)
         }
+    }
+    
+    @IBAction func doneAction() {
+        delegate?.setBackgroundColor(
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value)
+        )
+        
+        dismiss(animated: true)
     }
     
     private func setColor(red: CGFloat, green: CGFloat, blue: CGFloat) {
