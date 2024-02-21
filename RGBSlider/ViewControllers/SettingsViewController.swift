@@ -21,16 +21,16 @@ final class SettingsViewController: UIViewController {
     
     var color: UIColor!
     
-    var red: CGFloat = 0
-    var green: CGFloat = 0
-    var blue: CGFloat = 0
-    var alpha: CGFloat = 0
-    
     weak var delegate: SettingsViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         coloredView.layer.cornerRadius = 20
+        
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
         
         color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         setColor(red: red, green: green, blue: blue)
